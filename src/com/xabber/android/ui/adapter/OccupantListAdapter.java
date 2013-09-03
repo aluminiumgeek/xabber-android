@@ -15,14 +15,17 @@
 package com.xabber.android.ui.adapter;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.EditText;
 
 import com.xabber.android.data.extension.avatar.AvatarManager;
 import com.xabber.android.data.extension.muc.MUCManager;
@@ -79,6 +82,11 @@ public class OccupantListAdapter extends BaseAdapter implements
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final View view;
+		final View chatView; 
+		
+		chatView = activity.getLayoutInflater().inflate(
+				R.layout.chat_viewer, parent, false);
+		
 		if (convertView == null) {
 			view = activity.getLayoutInflater().inflate(
 					R.layout.occupant_list_item, parent, false);
@@ -113,6 +121,14 @@ public class OccupantListAdapter extends BaseAdapter implements
 		nameView.setTextAppearance(activity, textStyle);
 		statusTextView.setText(occupant.getStatusText());
 		statusModeView.setImageLevel(occupant.getStatusMode().getStatusLevel());
+		
+		view.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View chatView) {
+				((EditText) chatView.findViewById(R.id.chat_input)).setText("aasdd: ");
+			}
+		});
+		
 		return view;
 	}
 }

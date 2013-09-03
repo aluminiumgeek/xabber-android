@@ -98,7 +98,7 @@ public class ChatViewer extends ManagedActivity implements
 	 * Minimum number of new messages to be requested from the server side
 	 * archive.
 	 */
-	private static final int MINIMUM_MESSAGES_TO_LOAD = 10;
+	private static final int MINIMUM_MESSAGES_TO_LOAD = 20;
 
 	private static final String SAVED_ACCOUNT = "com.xabber.android.ui.ChatViewer.SAVED_ACCOUNT";
 	private static final String SAVED_USER = "com.xabber.android.ui.ChatViewer.SAVED_USER";
@@ -277,9 +277,9 @@ public class ChatViewer extends ManagedActivity implements
 						getResources().getText(R.string.muc_join)).setIcon(
 						android.R.drawable.ic_menu_add);
 			else
-				menu.add(0, OPTION_MENU_MUC_INVITE_ID, 0,
-						getResources().getText(R.string.muc_invite)).setIcon(
-						android.R.drawable.ic_menu_add);
+				menu.add(0, OPTION_MENU_OCCUPANT_LIST_ID, 0,
+						getResources().getText(R.string.occupant_list)).setIcon(
+							android.R.drawable.ic_menu_agenda);
 		} else {
 			menu.add(0, OPTION_MENU_VIEW_CONTACT_ID, 0,
 					getResources().getText(R.string.contact_editor)).setIcon(
@@ -345,8 +345,8 @@ public class ChatViewer extends ManagedActivity implements
 		}
 		if (abstractChat != null && abstractChat instanceof RoomChat
 				&& ((RoomChat) abstractChat).getState() == RoomState.available)
-			menu.add(0, OPTION_MENU_OCCUPANT_LIST_ID, 0, getResources()
-					.getText(R.string.occupant_list));
+			menu.add(0, OPTION_MENU_MUC_INVITE_ID, 0,
+					getResources().getText(R.string.muc_invite));
 		return true;
 	}
 
